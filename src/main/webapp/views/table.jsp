@@ -10,7 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <Button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-  <a href="${pageContext.request.contextPath}/ServletAve?action=save">Create new</a>
+  <a href="${pageContext.request.contextPath}/ServletEstudiante?action=save">Create new</a>
 </Button>
 
 <section class="container px-4 mx-auto">
@@ -40,7 +40,7 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
           class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
   >
     <div class="flex items-center gap-x-3">
-      <span>Name</span>
+      <span>nombre</span>
     </div>
   </th>
   <th
@@ -48,7 +48,7 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
           class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
   >
     <div class="flex items-center gap-x-3">
-      <span>Kind</span>
+      <span>apellido</span>
     </div>
   </th>
   <th
@@ -75,8 +75,8 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
   </th>
 </tr>
 </thead>
-<c:if test="${aves != null}">
-  <c:forEach items="${aves}" var="ave">
+<c:if test="${estudiantes != null}">
+  <c:forEach items="${estudiantes}" var="estudiante">
 
                 <tbody
                         class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
@@ -92,7 +92,7 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
                           <h2
                                   class="font-medium text-gray-800 dark:text-white"
                           >
-                            ${ave.id}
+                            ${estudiante.id}
                           </h2>
 
                         </div>
@@ -100,22 +100,29 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
                     </div>
                   </td>
                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                    ${ave.name}
+                    ${estudiante.nombre}
                   </td>
                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                      ${ave.kind}
+                      ${estudiante.apellido}
                   </td>
                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                      ${ave.plumage}
+                    <c:if test="${not empty estudiante.cursos}">
+                      <c:forEach items="${estudiante.cursos}" var="curso" varStatus="cursoStatus">
+                        ${curso.nombre}<c:if test="${not cursoStatus.last}">, </c:if>
+                      </c:forEach>
+                    </c:if>
+                    <c:if test="${empty estudiante.cursos}">
+                      Sin cursos aun
+                    </c:if>
                   </td>
                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                      ${ave.habitat}
+<%--                      ${estudiante.habitat}--%>
                   </td>
 
                   <td class="px-4 py-4 text-sm whitespace-nowrap">
                     <div class="flex items-center gap-x-6">
                       <a
-                              href="${pageContext.request.contextPath}/ServletAve?action=delete&id=${ave.id}"
+                              href="${pageContext.request.contextPath}/ServletEstudiante?action=delete&id=${estudiante.id}"
                               class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none"
                       >
                         <svg
@@ -135,7 +142,7 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
                       </a>
 
                       <a
-                              href="${pageContext.request.contextPath}/ServletAve?action=findOne&id=${ave.id}"
+                              href="${pageContext.request.contextPath}/ServletEstudiante?action=findOne&id=${estudiante.id}"
                               class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
                       >
                         <svg

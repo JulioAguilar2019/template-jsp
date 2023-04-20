@@ -1,6 +1,8 @@
 package services;
 
-import entities.Ave;
+//import entities.Ave;
+//import entities.Estudiante;
+import entities.Estudiante;
 import interfaces.Operations;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -8,39 +10,39 @@ import utilities.AdapterJPA;
 
 import java.util.List;
 
-public class AveClient implements Operations<Ave> {
+public class EstudianteClient implements Operations<Estudiante> {
     private final EntityManager em = AdapterJPA.getEntityManagerFactory();
 
     @Override
-    public List<Ave> findAll() {
-        TypedQuery<Ave> query = em.createQuery("SELECT c FROM Ave c", Ave.class);
+    public List<Estudiante> findAll() {
+        TypedQuery<Estudiante> query = em.createQuery("SELECT e FROM Estudiante e LEFT JOIN FETCH e.cursos", Estudiante.class);
         return query.getResultList();
     }
 
     @Override
-    public Ave findById(int id) {
-        return em.find(Ave.class, id);
+    public Estudiante findById(int id) {
+        return em.find(Estudiante.class, id);
     }
 
     @Override
-    public void save(Ave ave) {
+    public void save(Estudiante estudiante) {
         em.getTransaction().begin();
-        em.persist(ave);
+        em.persist(estudiante);
         em.getTransaction().commit();
     }
 
     @Override
-    public void update(Ave ave) {
+    public void update(Estudiante estudiante) {
         em.getTransaction().begin();
-        em.merge(ave);
+        em.merge(estudiante);
         em.getTransaction().commit();
     }
 
     @Override
     public void delete(int id) {
         em.getTransaction().begin();
-        Ave ave = em.find(Ave.class, id);
-        em.remove(ave);
+        Estudiante estudiante = em.find(Estudiante.class, id);
+        em.remove(estudiante);
         em.getTransaction().commit();
     }
 }
