@@ -1,6 +1,5 @@
 package controllers;
 
-import entities.Ave;
 import entities.Curso;
 import entities.Estudiante;
 import jakarta.servlet.*;
@@ -10,7 +9,6 @@ import services.CursosClient;
 import services.EstudianteClient;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
