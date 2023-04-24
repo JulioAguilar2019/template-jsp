@@ -10,7 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <Button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-  <a href="${pageContext.request.contextPath}/ServletProductos?action=save">Create new</a>
+  <a href="${pageContext.request.contextPath}/ServletOrdenes?action=save">Create new</a>
 </Button>
 
 <section class="container px-4 mx-auto">
@@ -39,6 +39,9 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
           scope="col"
           class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
   >
+    <div class="flex items-center gap-x-3">
+      <span>producto</span>
+    </div>
     <div class="flex items-center gap-x-3">
       <span>nombre</span>
     </div>
@@ -75,8 +78,8 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
   </th>
 </tr>
 </thead>
-<c:if test="${productos != null}">
-  <c:forEach items="${productos}" var="producto">
+<c:if test="${ordenes != null}">
+  <c:forEach items="${ordenes}" var="orden">
 
                 <tbody
                         class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
@@ -92,7 +95,7 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
                           <h2
                                   class="font-medium text-gray-800 dark:text-white"
                           >
-                            ${producto.getIdProducto()}
+                            ${orden.getIdOrden()}
                           </h2>
 
                         </div>
@@ -100,22 +103,23 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
                     </div>
                   </td>
                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                    ${producto.nombre}
+                      ${orden.getProducto().getNombre()}
                   </td>
                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                      ${producto.descripcion}
+                    ${orden.cantidad}
+                  </td>
+
+                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                            ${orden.fechaOrden}
                   </td>
                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            ${producto.getPrecioUnitario()}
-                  </td>
-                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                      ${producto.categoria}
+                      ${orden.direccionEntrega}
                   </td>
 
                   <td class="px-4 py-4 text-sm whitespace-nowrap">
                     <div class="flex items-center gap-x-6">
                       <a
-                              href="${pageContext.request.contextPath}/ServletProductos?action=delete&id=${producto.getIdProducto()}"
+                              href="${pageContext.request.contextPath}/ServletOrdenes?action=delete&id=${orden.getIdOrden()}"
                               class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none"
                       >
                         <svg
@@ -135,7 +139,7 @@ class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
                       </a>
 
                       <a
-                              href="${pageContext.request.contextPath}/ServletProductos?action=findOne&id=${producto.getIdProducto()}"
+                              href="${pageContext.request.contextPath}/ServletOrdenes?action=findOne&id=${orden.getIdOrden()}"
                               class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
                       >
                         <svg

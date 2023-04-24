@@ -24,6 +24,16 @@ public class OrdenesEntity {
     @Column(name = "direccion_entrega")
     private String direccionEntrega;
 
+    public OrdenesEntity() {
+    }
+
+    public OrdenesEntity( ProductosEntity producto, int cantidad, Date fechaOrden, String direccionEntrega) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.fechaOrden = fechaOrden;
+        this.direccionEntrega = direccionEntrega;
+    }
+
     public int getIdOrden() {
         return idOrden;
     }
@@ -57,5 +67,12 @@ public class OrdenesEntity {
         this.direccionEntrega = direccionEntrega;
     }
 
+    public ProductosEntity getProducto() {
+        return producto;
+    }
+
+    public void setProducto(ProductosEntity producto) {
+        this.producto = producto;
+    }
 
 }

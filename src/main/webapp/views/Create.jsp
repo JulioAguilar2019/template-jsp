@@ -14,25 +14,26 @@
 <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
   <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Create a new bird</h2>
 
-  <form action="${pageContext.request.contextPath}/ServletEstudiante?action=save" method="post">
+  <form action="${pageContext.request.contextPath}/ServletProductos?action=save" method="post">
     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
       <div>
-        <label class="text-gray-700 dark:text-gray-200" for="name">Name</label>
+        <label class="text-gray-700 dark:text-gray-200" for="name">Nombre</label>
         <input id="name" required name="nombre" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
       </div>
 
       <div>
-        <label class="text-gray-700 dark:text-gray-200" for="kind">Kind</label>
-        <input id="kind" required type="text" name="apellido" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+        <label class="text-gray-700 dark:text-gray-200" for="descripcion">Descripcion</label>
+        <input id="descripcion" required type="text" name="descripcion" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
       </div>
-        <div id="customSelect" class="border border-gray-300 rounded-lg">
-            <c:forEach items="${cursos}" var="curso">
-                <label class="block p-2">
-                    <input type="checkbox" name="cursos" value="${curso.id}" class="mr-2">
-                        ${curso.nombre}
-                </label>
-            </c:forEach>
+        <div>
+            <label class="text-gray-700 dark:text-gray-200" for="precio">Precio</label>
+            <input id="precio" required type="number" min="0" name="precio_unitario" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
         </div>
+        <div>
+            <label class="text-gray-700 dark:text-gray-200" for="categoria">Categoria</label>
+            <input id="categoria" required type="text" name="categoria" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+        </div>
+
 
 <%--      <div>--%>
 <%--        <label class="text-gray-700 dark:text-gray-200" for="plumage">Plumage</label>--%>

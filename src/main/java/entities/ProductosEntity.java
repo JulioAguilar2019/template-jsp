@@ -2,7 +2,6 @@ package entities;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "productos", schema = "laboratorio2")
@@ -10,7 +9,7 @@ public class ProductosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_producto")
-    private int idProducto;
+    private int id_producto;
     @Basic
     @Column(name = "nombre")
     private String nombre;
@@ -19,17 +18,27 @@ public class ProductosEntity {
     private String descripcion;
     @Basic
     @Column(name = "precio_unitario")
-    private double precioUnitario;
+    private double precio_unitario;
     @Basic
     @Column(name = "categoria")
     private String categoria;
 
-    public int getIdProducto() {
-        return idProducto;
+    public ProductosEntity() {
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public ProductosEntity(String nombre, String descripcion, double precio_unitario, String categoria) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio_unitario = precio_unitario;
+        this.categoria = categoria;
+    }
+
+    public int getIdProducto() {
+        return id_producto;
+    }
+
+    public void setIdProducto(int id_producto) {
+        this.id_producto = id_producto;
     }
 
     public String getNombre() {
@@ -49,11 +58,11 @@ public class ProductosEntity {
     }
 
     public double getPrecioUnitario() {
-        return precioUnitario;
+        return precio_unitario;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public void setPrecioUnitario(double precio_unitario) {
+        this.precio_unitario = precio_unitario;
     }
 
     public String getCategoria() {
